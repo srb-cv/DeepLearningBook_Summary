@@ -20,14 +20,14 @@ There exists different paradigms other than unsupervised pretraining for perform
 Example > Virtual Adversial Training mentioned in section 7.13.
 Also Ladder networks(Rasmus et al. 2015) to combine both supervised and unsupervised losses
 
-**why unsupervised training works ?**
+**why unsupervised pretraining works ?**
 
 Two main ideas:
 * Choice of initial parameters have a significant regularizing effect on the model
 * Learning algorithm can use information learned in the unsupervised phase to peform better in the supervised learning stage
 
 
-**when unsupervised training works ?**
+**when unsupervised pretraining works ?**
 * From the point of view of unsupervised pretraining as **learning a representation**, it would be effective when the iniotial representation is poor.
 
    Example, use of word embeddings where one hot vectors are not very informative.
@@ -35,3 +35,6 @@ Two main ideas:
    Also such pretraining is less effective when processing images, perhaps because images already lie in a rich vector space.
 
 * From the point of view of unsupervised pretraining as a **regularizer**, such prtraining is helpful when number of labelled data is very small and number of unlabelled examples is very large.
+
+**Disadvantages of Unsupervised pretraining**
+* The complete learning process involves operating with two trainig phases. So this strategy does not have a clear way 
