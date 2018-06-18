@@ -28,7 +28,7 @@ Two main ideas:
 
 
 **when unsupervised pretraining works ?**
-* From the point of view of unsupervised pretraining as **learning a representation**, it would be effective when the iniotial representation is poor.
+* From the point of view of unsupervised pretraining as **learning a representation**, it would be effective when the initial representation is poor.
 
    Example, use of word embeddings where one hot vectors are not very informative.
 
@@ -37,4 +37,10 @@ Two main ideas:
 * From the point of view of unsupervised pretraining as a **regularizer**, such prtraining is helpful when number of labelled data is very small and number of unlabelled examples is very large.
 
 **Disadvantages of Unsupervised pretraining**
-* The complete learning process involves operating with two trainig phases. So this strategy does not have a clear way 
+* The complete learning process involves operating with two trainig phases. So this strategy does not have a clear way to control the strength of regularizatoion in the pretraining phase
+* The performance of second phase can not be predicted during the first phase
+> Unsupervised pretraining has been largely abandoned in todays deep learning scenarios, except in the field of NLP where a word embedding is obtained using such kind of pretraining
+
+> The idea of pretraining has been generalized to **supervised pretraining**. The most prevelant example being the CNNs used are mostly pretrained on ImageNet dataset.
+
+### 15.2 Transfer Learning and Domain Adaptation
