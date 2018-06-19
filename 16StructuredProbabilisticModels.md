@@ -1,46 +1,40 @@
-## 15 Represenatation Learning
+## 16 Structured Probabilistic Models for Deep Learning
 
-Represenatation learning is useful to handle multiple modalities or domains, or to transfer learned knowledge to tasks where few or no examples are given but a task representation exists.
-
-Both supervised and unsupervised deep learning algorithms have a main training objective but also learn a representation as a side effect. Difference is that in case of supervised learning we do not impose any condition on the learned intermediate feature.
-
-### 15.1 Greedy Layer-wise Unsupervised Pretraining
-
-* Enabled researchers for the first time to to train a deep supervised network.
-* This appproach relies on single layer represenattaion learning algorithm.
-
-  Each layer is pretrained using unsupervised learning, taking the output of previous layer as input and producing as output a new simpler representation
-
-> * Greedy Layer-wise Unsupervised training is not required nowadays to train deep neural network architectures.
-> * In context of  supervised learning task it can be viewed as a regularizer and a form of parameter initialization
-
-### 15.1.1 When and why does unsupervised pretraining work ?
-
-There exists different paradigms other than unsupervised pretraining for performing semi-supervised learning with the neural networks.
-Example > Virtual Adversial Training mentioned in section 7.13.
-Also Ladder networks(Rasmus et al. 2015) to combine both supervised and unsupervised losses
-
-**why unsupervised pretraining works ?**
-
-Two main ideas:
-* Choice of initial parameters have a significant regularizing effect on the model
-* Learning algorithm can use information learned in the unsupervised phase to peform better in the supervised learning stage
+###Structurd Probabilistic Models - 
+*Structured Probabilistic Models are a way of describing a probability distribution using a graph.
+*Describe which random variables in the probability distribution interact with each other.
+*Since nides and edges are used to represent the data, these are also known as graphical models.
 
 
-**when unsupervised pretraining works ?**
-* From the point of view of unsupervised pretraining as **learning a representation**, it would be effective when the initial representation is poor.
+###Need for structured modelling 
+* Modeling a distribution over thousands or millions of random variables is computationally and statistically challenging.
+* If we want to model a vector X of R^n, each can take k discrete values each. P(X) would have k^n parameters.
 
-   Example, use of word embeddings where one hot vectors are not very informative.
+###Using graphs to describe model structure
+**Directed Models/Bayesian Network**
+Models in which the edges are directed. 
+![Directed graph Example](images/16/direct.png)
+Directed graphical model relay race example. Where finishing times of Carol depends on Bob and Bob's on Alice.
 
-   Also such pretraining is less effective when processing images, perhaps because images already lie in a rich vector space.
+**Undirected graph/Markov Network** 
+![Directed graph Example](images/16/direct.png)
+Undirected graph representing how your roomates health h_r, your health h_y and your work colleague's health h_c affect each other.
 
-* From the point of view of unsupervised pretraining as a **regularizer**, such prtraining is helpful when number of labelled data is very small and number of unlabelled examples is very large.
+###Factor graphs
+Another way of drawing undirected graphs. It has two types of nodes -
+* Variables
+* Factors - Defining the relationship between the variables and comes with a factor function to describe their relationship.
 
-**Disadvantages of Unsupervised pretraining**
-* The complete learning process involves operating with two trainig phases. So this strategy does not have a clear way to control the strength of regularizatoion in the pretraining phase
-* The performance of second phase can not be predicted during the first phase
-> Unsupervised pretraining has been largely abandoned in todays deep learning scenarios, except in the field of NLP where a word embedding is obtained using such kind of pretraining
+###Use of probabilistic models
+* Ask questions about how variables are related to each other.
+* given the medical tests we might want to ask what disease a patient might have by using the principle of maximum likehood.
 
-> The idea of pretraining has been generalized to **supervised pretraining**. The most prevelant example being the CNNs used are mostly pretrained on ImageNet dataset.
+###Deep learning approach to structured probabilistic Models
+**Restricted Boltzmann Machine**
+* Single layer of latent variables and hidden variables. Both connected by a weight matrix W.
+* v^T W h, W is a learnable parameter. The restrictions are there should not be any direct interaction between any two visible units or between two hidden units.
 
-### 15.2 Transfer Learning and Domain Adaptation
+###Important questions from chapter
+* In which case may a graphical model fail to encode and independence between variables?
+* What do we do when we want to draw a sample from an undirected model?
+* What properties of RBM are necessary for 16.11-12 to hold true?
