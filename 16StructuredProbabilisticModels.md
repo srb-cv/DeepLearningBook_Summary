@@ -15,11 +15,15 @@
 **Directed Models/Bayesian Network**
 
 Models in which the edges are directed. 
+
 ![Directed graph Example](images/16/directed.png?raw=true)
+
 Directed graphical model relay race example. Where finishing times of Carol depends on Bob and Bob's on Alice.
 
 **Undirected graph/Markov Network** 
+
 ![Directed graph Example](images/16/undirected.png?raw=true)
+
 Undirected graph representing how your roomates health h_r, your health h_y and your work colleague's health h_c affect each other.
 
 ### Factor graphs
